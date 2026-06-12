@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+  <title>Mentoria Águias da Perícia</title>
+  <meta name="description" content="Acompanhamento de 12 meses para peritos que querem construir um negócio estruturado, previsível e escalável." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;950&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #000000;
+      --card: #151515;
+      --red: #E9030C;
+      --red-vivo: #FF0000;
+      --red-profundo: #740B0B;
+      --white: #FFFFFF;
+      --muted: #CFCBBF;
+      --cta: #23AF0A;
+      --cta-hover: #28c40c;
+      --line: rgba(255, 255, 255, 0.06);
+      --max: 1280px;
+    }
+
+    html { color-scheme: dark; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+    button { font: inherit; }
+
+    .container {
+      margin: 0 auto;
+      max-width: var(--max);
+      padding: 0 32px;
+      width: 100%;
+    }
+
+    .nav {
+      left: 0; right: 0; top: 0;
+      padding: 32px 0;
+      position: absolute;
+      z-index: 5;
+    }
+
+    .nav-inner {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .brand {
+      align-items: center;
+      display: inline-flex;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      background: var(--white);
+      border-radius: 50%;
+      color: var(--bg);
+      display: grid;
+      font-weight: 950;
+      height: 28px;
+      place-items: center;
+      width: 28px;
+      font-size: 0.7rem;
+    }
+
+    .nav-links {
+      align-items: center;
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: color 200ms ease;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .btn {
+      align-items: center;
+      border: 0;
+      display: inline-flex;
+      font-size: 0.8rem;
+      font-weight: 800;
+      justify-content: center;
+      letter-spacing: 0.04em;
+      min-height: 48px;
+      padding: 14px 32px;
+      text-transform: uppercase;
+      transition: background 200ms ease;
+    }
+
+    .btn-cta {
+      background: var(--cta);
+      color: var(--white);
+    }
+
+    .btn-cta:hover { background: var(--cta-hover); }
+
+    .hero {
+      min-height: 100svh;
+      padding: 100px 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg {
+      inset: 0;
+      position: absolute;
+    }
+
+    .hero-bg img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      width: 100%;
+    }
+
+    .hero-bg::after {
+      background: linear-gradient(90deg, var(--bg) 0%, rgba(0, 0, 0, 0.7) 55%, rgba(0, 0, 0, 0.2) 100%);
+      content: "";
+      inset: 0;
+      position: absolute;
+    }
+
+    .hero-grid {
+      max-width: 720px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.4vw, 4.2rem);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      line-height: 1.04;
+      max-width: 680px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero-lead {
+      color: var(--muted);
+      font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+      line-height: 1.8;
+      margin-top: 24px;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+    }
+
+    .microcopy {
+      color: rgba(136, 146, 160, 0.7);
+      font-size: 0.8rem;
+      margin-top: 18px;
+    }
+
+    .microcopy strong { color: var(--red); font-weight: 700; }
+
+    .proof-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 0;
+    }
+
+    .proof-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .proof-item strong {
+      color: var(--red);
+      display: block;
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .proof-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section { padding: 150px 0; }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.4vw, 3.4rem);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      max-width: 760px;
+    }
+
+    h3 {
+      font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .kicker {
+      color: var(--red);
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .section-head {
+      margin-bottom: 60px;
+      max-width: 800px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .copy {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-top: 22px;
+      max-width: 660px;
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 48px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      padding: 0;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+
+    .turning {
+      background: var(--card);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .turning-grid {
+      display: grid;
+      gap: 56px;
+      grid-template-columns: 1fr 0.4fr;
+    }
+
+    .statement {
+      border-left: 1px solid var(--muted);
+      color: var(--white);
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      font-weight: 600;
+      line-height: 1.55;
+      padding: 6px 0 6px 24px;
+    }
+
+    .areas-grid {
+      display: grid;
+      gap: 2px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .area-card {
+      background: var(--card);
+      padding: 36px 32px;
+    }
+
+    .area-num {
+      color: var(--red);
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .area-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .area-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .area-footer {
+      border-top: 1px solid var(--line);
+      color: var(--white);
+      font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+      font-weight: 700;
+      margin-top: 48px;
+      padding-top: 28px;
+      text-align: center;
+    }
+
+    .evolution {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .level {
+      padding: 0 4px;
+    }
+
+    .level-num {
+      font-size: 2.6rem;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+      color: var(--red);
+    }
+
+    .level h3 {
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .level p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .receive-grid {
+      display: grid;
+      gap: 64px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .receive-block {
+      padding-top: 0;
+    }
+
+    .receive-block p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin-top: 14px;
+    }
+
+    .social {
+      background: var(--card);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .social-layout {
+      display: grid;
+      gap: 64px;
+      grid-template-columns: 0.6fr 0.5fr;
+    }
+
+    .social-number {
+      color: var(--red);
+      font-size: clamp(4rem, 10vw, 7.5rem);
+      font-weight: 950;
+      letter-spacing: -0.06em;
+      line-height: 0.85;
+      margin-bottom: 8px;
+    }
+
+    .social-lines {
+      display: grid;
+      gap: 16px;
+    }
+
+    .social-lines p {
+      border-top: 1px solid var(--line);
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding-top: 18px;
+    }
+
+    .mentor-grid {
+      align-items: center;
+      display: grid;
+      gap: 64px;
+      grid-template-columns: 0.55fr 0.7fr;
+    }
+
+    .mentor-photo {
+      aspect-ratio: 4 / 5;
+      background: url("assest/pgthero.webp") center right 20% / cover no-repeat;
+      min-height: 480px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .pricing-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 0.7fr 1fr;
+    }
+
+    .large-card {
+      background: var(--card);
+      padding: 52px 48px;
+    }
+
+    .price {
+      color: var(--red);
+      font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      margin: 20px 0 8px;
+    }
+
+    .price-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .small-note {
+      color: rgba(136, 146, 160, 0.6);
+      font-size: 0.84rem;
+      margin-top: 22px;
+    }
+
+    .faq-wrap {
+      display: grid;
+      gap: 56px;
+      grid-template-columns: 0.55fr 0.9fr;
+    }
+
+    .faq-list {
+      display: grid;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-question {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      font-weight: 700;
+      justify-content: space-between;
+      padding: 22px 0;
+      text-align: left;
+      width: 100%;
+    }
+
+    .faq-question span {
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: transform 200ms ease;
+    }
+
+    .faq-answer {
+      color: var(--muted);
+      display: none;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      padding: 0 0 22px;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question span { transform: rotate(45deg); }
+
+    .cta-final { padding-top: 8px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: rgba(136, 146, 160, 0.5);
+      font-size: 0.84rem;
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      .turning-grid,
+      .social-layout,
+      .mentor-grid,
+      .faq-wrap { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+
+      .hero { padding: 120px 0 60px; }
+
+      .grid-3,
+      .areas-grid,
+      .evolution,
+      .receive-grid,
+      .pricing-grid { grid-template-columns: 1fr; }
+
+      .social-layout { align-items: start; }
+
+      .mentor-photo { min-height: 360px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+
+      .brand { font-size: 0.7rem; }
+
+      .nav .btn { display: none; }
+
+      .hero { min-height: auto; padding: 100px 0 50px; }
+
+      section { padding: 80px 0; }
+      .proof-strip { padding: 22px 0; }
+      .proof-grid { gap: 16px; }
+
+      .card, .large-card { padding: 32px 24px; }
+      .btn { width: 100%; }
+
+      .mentor-photo { min-height: 280px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Mentoria Águias da Perícia">
+        <span class="brand-mark">A</span>
+        Águias da Perícia
+      </a>
+      <nav class="nav-links" aria-label="Seções">
+        <a href="#dor">Diagnóstico</a>
+        <a href="#planetas">4 Planetas</a>
+        <a href="#mentor">Mentor</a>
+        <a href="#investimento">Investimento</a>
+      </nav>
+      <button class="btn btn-cta" data-yf-popup="NypzlrN" data-yf-size="100" type="button">Aplicar</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Introdução">
+      <div class="hero-bg">
+        <img src="assest/pgthero.webp" alt="" aria-hidden="true" />
+      </div>
+      <div class="container">
+        <div class="hero-grid">
+          <div class="reveal">
+            <h1>Transforme sua atuação na perícia em um negócio <span>estruturado, previsível e escalável.</span></h1>
+            <p class="hero-lead">Acompanhamento de 12 meses para peritos que querem sair da improvisação, aumentar faturamento e construir uma operação com estratégia, processos, marketing, IA e equipe.</p>
+            <div class="hero-actions">
+              <button class="btn btn-cta" data-yf-popup="NypzlrN" data-yf-size="100" type="button">Quero aplicar para a mentoria</button>
+            </div>
+            <p class="microcopy"><strong>Vagas limitadas</strong> para acompanhamento próximo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="proof-strip" aria-label="Indicadores">
+      <div class="container proof-grid">
+        <div class="proof-item reveal">
+          <strong>+R$ 5 milhões</strong>
+          <span>Faturados pela 1ª turma</span>
+        </div>
+        <div class="proof-item reveal">
+          <strong>12 meses</strong>
+          <span>De acompanhamento</span>
+        </div>
+        <div class="proof-item reveal">
+          <strong>Sistema dos 4 Planetas</strong>
+          <span>Jornada de evolução</span>
+        </div>
+      </div>
+    </aside>
+
+    <section id="dor">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Diagnóstico</span>
+          <h2>O que está te travando não é falta de técnica. É falta de estrutura.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>Dependência de indicação</h3>
+            <p>O crescimento fica refém da memória do mercado e de oportunidades que chegam sem previsibilidade.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Tudo depende de você</h3>
+            <p>Prazos, relacionamento, entrega, venda e gestão concentrados na sua agenda.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Falta de previsibilidade</h3>
+            <p>Sem processo, posicionamento e rotina comercial, o faturamento vira consequência do acaso.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="turning">
+      <div class="container turning-grid">
+        <div class="reveal">
+          <span class="kicker">A virada</span>
+          <h2>Você não precisa só de mais clientes. Você precisa de um modelo de negócio.</h2>
+          <p class="copy">Agenda cheia não é crescimento quando vem acompanhada de noites viradas, prazos apertados e dependência total da sua operação. Escalar exige estrutura: oferta clara, aquisição previsível, processos, gestão e capacidade de formar equipe sem perder qualidade.</p>
+        </div>
+        <p class="statement reveal">O perito deixa de operar apenas como técnico e passa a decidir como empresário.</p>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="kicker">Áreas de conhecimento</span>
+          <h2>Áreas de conhecimento para transformar técnica em negócio.</h2>
+          <p class="copy" style="margin-left: auto; margin-right: auto; text-align: center;">A mentoria desenvolve as frentes que um perito precisa dominar para deixar de depender apenas da execução técnica e construir uma operação mais estratégica, previsível e escalável.</p>
+        </div>
+        <div class="areas-grid">
+          <article class="area-card reveal">
+            <span class="area-num">01</span>
+            <h3>Perícia</h3>
+            <p>Transforme sua capacidade técnica em uma atuação mais valorizada, estratégica e posicionada.</p>
+          </article>
+          <article class="area-card reveal">
+            <span class="area-num">02</span>
+            <h3>Consultoria</h3>
+            <p>Use sua experiência para orientar clientes, gerar novas oportunidades e ampliar sua fonte de receita.</p>
+          </article>
+          <article class="area-card reveal">
+            <span class="area-num">03</span>
+            <h3>Auditoria</h3>
+            <p>Fortaleça sua análise crítica, sua autoridade técnica e sua capacidade de entregar diagnósticos robustos.</p>
+          </article>
+          <article class="area-card reveal">
+            <span class="area-num">04</span>
+            <h3>Projetos</h3>
+            <p>Estruture propostas, processos, escopos e entregáveis para crescer com mais organização.</p>
+          </article>
+          <article class="area-card reveal">
+            <span class="area-num">05</span>
+            <h3>Avaliações</h3>
+            <p>Amplie sua atuação com ofertas mais claras, melhor precificação e maior percepção de valor.</p>
+          </article>
+          <article class="area-card reveal">
+            <span class="area-num">06</span>
+            <h3>Gestão e Escala</h3>
+            <p>Construa uma operação com rotina comercial, processos, autoridade, equipe e previsibilidade.</p>
+          </article>
+        </div>
+        <p class="area-footer reveal">A técnica te coloca no jogo. A estrutura te permite crescer.</p>
+      </div>
+    </section>
+
+    <section id="planetas">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="kicker">Sistema dos 4 Planetas</span>
+          <h2>Uma linha de evolução por faturamento e maturidade empresarial.</h2>
+        </div>
+        <div class="evolution">
+          <article class="level reveal">
+            <div class="level-num">01</div>
+            <h3>Aspirante</h3>
+            <p>Até R$ 5 mil/mês</p>
+          </article>
+          <article class="level reveal">
+            <div class="level-num">02</div>
+            <h3>Explorador</h3>
+            <p>R$ 5 mil a R$ 15 mil/mês</p>
+          </article>
+          <article class="level reveal">
+            <div class="level-num">03</div>
+            <h3>Conquistador</h3>
+            <p>R$ 15 mil a R$ 50 mil/mês</p>
+          </article>
+          <article class="level reveal">
+            <div class="level-num">04</div>
+            <h3>Visionário</h3>
+            <p>Acima de R$ 50 mil/mês</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">O que você recebe</span>
+          <h2>Direção, ambiente e execução por 12 meses.</h2>
+        </div>
+        <div class="receive-grid">
+          <article class="receive-block reveal">
+            <h3>Acompanhamento</h3>
+            <p>Encontros com mentor, hot-seats, concierge e SOS individual para destravar decisões importantes.</p>
+          </article>
+          <article class="receive-block reveal">
+            <h3>Execução</h3>
+            <p>Laboratórios de IA aplicada, sabatinas de criativos e rotinas para transformar plano em prática.</p>
+          </article>
+          <article class="receive-block reveal">
+            <h3>Autoridade</h3>
+            <p>AutorIA 10x, posicionamento, método, comunicação e construção de ativos comerciais.</p>
+          </article>
+          <article class="receive-block reveal">
+            <h3>Ecossistema</h3>
+            <p>Comunidade premium, mastermind, grupo de empresários da perícia, masterclasses e experiências.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="social">
+      <div class="container social-layout">
+        <div class="reveal">
+          <span class="kicker">Prova social</span>
+          <div class="social-number">+R$ 5M</div>
+          <p class="hero-lead">faturados pela 1ª turma nos últimos 12 meses.</p>
+        </div>
+        <div class="social-lines reveal">
+          <p>Ambiente de mastermind</p>
+          <p>Aplicação prática</p>
+          <p>Peritos que crescem com método</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mentor">
+      <div class="container mentor-grid">
+        <div class="mentor-photo reveal" role="img" aria-label="Mentor da Mentoria Águias da Perícia"></div>
+        <div class="reveal">
+          <span class="kicker">Mentor</span>
+          <h2>Edilson Aguiais</h2>
+          <p class="copy">Economista, contador e advogado. Mestre pela UFG e MBA em Perícia &amp; Direito Bancário. Perito judicial com mais de 1.000 pareceres emitidos e professor da PUC/GO.</p>
+          <p class="copy">Criador da Comunidade de Perícia — hoje com milhares de alunos ativos —, Edilson construiu sua carreira na interseção entre técnica e gestão. Sua missão é transformar peritos técnicos em empresários da perícia.</p>
+          <div class="badges">
+            <span class="badge">Economista</span>
+            <span class="badge">Contador</span>
+            <span class="badge">Advogado</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="investimento" class="turning">
+      <div class="container">
+        <div class="pricing-grid">
+          <article class="large-card reveal">
+            <span class="kicker">Garantia</span>
+            <h2>Garantia de execução</h2>
+            <p class="copy">A garantia é para quem executa: participa dos encontros, implanta as ferramentas, aplica os conteúdos e segue o plano individual. Os critérios de participação, execução e aplicação são definidos em contrato.</p>
+          </article>
+          <article class="large-card reveal">
+            <span class="kicker">Investimento</span>
+            <h2>Mentoria Águias da Perícia</h2>
+            <div style="margin-top: 34px;">
+              <button class="btn btn-cta" data-yf-popup="NypzlrN" data-yf-size="100" type="button">Quero fazer minha aplicação</button>
+            </div>
+            <p class="small-note">Valor fixo, sem taxas futuras. Vagas limitadas para preservar o acompanhamento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container faq-wrap">
+        <div class="cta-final reveal">
+          <span class="kicker">Próximo passo</span>
+          <h2>Agora você tem dois caminhos.</h2>
+          <p class="copy">Continuar tentando crescer sozinho ou entrar em uma jornada guiada para construir uma estrutura empresarial na perícia.</p>
+          <div style="margin-top: 36px;">
+            <button class="btn btn-cta" data-yf-popup="NypzlrN" data-yf-size="100" type="button">Aplicar para a Mentoria Águias da Perícia</button>
+          </div>
+        </div>
+        <div class="faq-list reveal">
+          <article class="faq-item open">
+            <button class="faq-question" type="button">A mentoria é um curso? <span>+</span></button>
+            <div class="faq-answer">Não. É um acompanhamento de 12 meses com direção, ambiente, encontros e execução guiada.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">Para quem é indicada? <span>+</span></button>
+            <div class="faq-answer">Para peritos que querem estruturar a atuação técnica como negócio, com mais previsibilidade, autoridade e gestão.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">Preciso faturar alto para entrar? <span>+</span></button>
+            <div class="faq-answer">Não necessariamente. O Sistema dos 4 Planetas organiza a jornada conforme o momento atual do perito.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">Existe garantia? <span>+</span></button>
+            <div class="faq-answer">Sim, condicionada aos critérios de participação, execução e aplicação definidos em contrato.</div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button">Qual é o investimento? <span>+</span></button>
+            <div class="faq-answer">R$ 25.000 à vista ou 12x de R$ 2.500.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">&copy; 2026 Mentoria Águias da Perícia. Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        button.closest(".faq-item").classList.toggle("open");
+      });
+      button.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          button.closest(".faq-item").classList.toggle("open");
+        }
+      });
+    });
+  </script>
+
+  <script src="https://embed.yayforms.link/next/embed.js"></script>
+</body>
+</html>
